@@ -2,12 +2,13 @@
 
 
 ## Github Instructions
-- Fork this repository.
-- Clone your Fork to your laptop.
+- Clone this repository to your machine.
+- Create a new branch for your work. Example: `davids-branch`
 - Complete the sections below.
-- Commit frequently. Reminder: your commit history is part of what is being assessed.
-- Create a pull request when you're done.
-- Paste the link into Canvas.
+- Commit code as needed. Reminder: your commit history is part of what is being assessed.
+- Push your branch to Github.
+- Create a pull request to the master branch on Github. Tag the Instruction Associates and Instructor in your pull request.
+- Paste the link of your pull request into Canvas.
 
 ## App Description
 Build a Flash Cards app that allows the user to create flash cards. Any created or saved flash cards should be persisted to the documents directory. The user should then be able to use those flash cards to test their knowledge!
@@ -24,7 +25,7 @@ There are also some interesting stretch features (below the rubric).
 
 ### AutoLayout Requirements
 
-Your UI should be created programmatically using constraints. Do not use a storyboard. 
+Your UI should be created programmatically using constraints. Do not use a storyboard. The Tab Bar Controller has been created in the Scene Delegate as the root view controller, but only has empty UIViewControllers.
 
 ### Flash cards collection
 The first view controller contains the user's flash card collection. When the view loads, each "card" should show the title of the card. When a user taps the card, it should use an animation to load the "back" of the card, which lists the description (facts) of the card.
