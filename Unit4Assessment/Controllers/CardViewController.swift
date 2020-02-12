@@ -39,7 +39,7 @@ class CardViewController: UIViewController {
         do {
             cards = try dataPersistence.loadItems()
         } catch {
-            print(error)
+            present(UIAlertController.errorAlert("Error occurred loading cards: \(error)"), animated: true)
         }
     }
     
@@ -57,7 +57,6 @@ class CardViewController: UIViewController {
         cardView.collectionView.dataSource = self
         cardView.collectionView.register(CardViewCell.self, forCellWithReuseIdentifier: "Card Cell")
         loadCards()
-        print(cards.isEmpty)
     }
 }
 
@@ -116,7 +115,7 @@ extension CardViewController: CardViewCellDelegate {
         do {
             try dataPersistence.deleteItem(at: index)
         } catch {
-            print("error deleting card: \(error)")
+            present(UIAlertController.errorAlert("error deleting card: \(error)"), animated: true)
         }
     }
 }

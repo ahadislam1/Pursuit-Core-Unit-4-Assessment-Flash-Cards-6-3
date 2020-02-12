@@ -45,12 +45,12 @@ class CreateViewController: UIViewController {
         if let text = createView.textField.text {
             let card = Card(cardTitle: text, facts: [createView.textView.text, createView.secondTextView.text])
             
-            if dataPersistence.hasItemBeenSaved(card) {
+            if !dataPersistence.hasItemBeenSaved(card) {
                 
                 do {
                     try dataPersistence.createItem(card)
                 } catch {
-                    print(error)
+                    present(UIAlertController.errorAlert("Error occurred creating card: \(error)"), animated: true)
                 }
                 
                 createView.textField.text = nil
@@ -76,7 +76,6 @@ class CreateViewController: UIViewController {
                 createView.button.isHidden = true
             }
         } else {
-            print(createView.button.isHidden)
             createView.button.isHidden = true
         }
     }
@@ -86,7 +85,6 @@ class CreateViewController: UIViewController {
 extension CreateViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         checkFields()
-        print("checkFields() \(Date())")
         return true
     }
     
@@ -99,7 +97,6 @@ extension CreateViewController: UITextFieldDelegate {
 extension CreateViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         checkFields()
-        print("checkFields() \(Date())")
         return true
     }
 }

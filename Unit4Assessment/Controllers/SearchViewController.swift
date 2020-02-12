@@ -54,7 +54,9 @@ class SearchViewController: UIViewController {
         GenericCoderAPI.manager.getJSON(objectType: CardWrapper.self, with: url) { result in
             switch result {
             case.failure(let error):
-                print(error)
+                DispatchQueue.main.async {
+                    self.present(UIAlertController.errorAlert("Error occurred loading cards from API: \(error)"), animated: true)
+                }
             case .success(let wrapper):
                 DispatchQueue.main.async {
                     self.cards = wrapper.cards
@@ -116,7 +118,7 @@ extension SearchViewController: CardViewCellDelegate {
             do {
                 try dataPersistence.createItem(card)
             } catch {
-                print(error)
+                present(UIAlertController.errorAlert("Error occurred creating card: \(error)"), animated: true)
             }
             let alertVC = UIAlertController(title: "Success", message: "Successfully added a flashcard!", preferredStyle: .alert)
             alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
