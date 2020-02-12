@@ -19,6 +19,7 @@
 		0B746F9523F23B110074013A /* unit4assessmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B746F9423F23B110074013A /* unit4assessmentTests.swift */; };
 		0B746F9D23F23CD10074013A /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B746F9C23F23CD10074013A /* CardViewCell.swift */; };
 		0B746FA323F241200074013A /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B746FA223F241200074013A /* EmptyView.swift */; };
+		0BB791A423F4778000B1DBB4 /* UIAlertController+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB791A023F4761900B1DBB4 /* UIAlertController+Error.swift */; };
 		546EE913235FCFB200043112 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546EE912235FCFB200043112 /* AppDelegate.swift */; };
 		546EE915235FCFB200043112 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546EE914235FCFB200043112 /* SceneDelegate.swift */; };
 		546EE91C235FCFB400043112 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 546EE91B235FCFB400043112 /* Assets.xcassets */; };
@@ -49,6 +50,7 @@
 		0B746F9623F23B110074013A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0B746F9C23F23CD10074013A /* CardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
 		0B746FA223F241200074013A /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		0BB791A023F4761900B1DBB4 /* UIAlertController+Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Error.swift"; sourceTree = "<group>"; };
 		546EE90F235FCFB200043112 /* unit4assessment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = unit4assessment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		546EE912235FCFB200043112 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		546EE914235FCFB200043112 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +125,14 @@
 			path = unit4assessmentTests;
 			sourceTree = "<group>";
 		};
+		0BB791A223F4762200B1DBB4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0BB791A023F4761900B1DBB4 /* UIAlertController+Error.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		546EE906235FCFB200043112 = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				546EE920235FCFB400043112 /* Info.plist */,
+				0BB791A223F4762200B1DBB4 /* Extensions */,
 				0B746F8D23F23ACE0074013A /* Models */,
 				0B746F8C23F23AC30074013A /* Services */,
 				0B746F8323F2393D0074013A /* Views */,
@@ -291,6 +302,7 @@
 				0B746F8023F239310074013A /* CreateView.swift in Sources */,
 				546EE915235FCFB200043112 /* SceneDelegate.swift in Sources */,
 				0B746F8B23F23AB80074013A /* GenericCoderAPI.swift in Sources */,
+				0BB791A423F4778000B1DBB4 /* UIAlertController+Error.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -28,5 +28,26 @@ class unit4assessmentTests: XCTestCase {
         
         wait(for: [exp], timeout: 5)
     }
+    
+    private func testNewEndpointURL() {
+        let url1 = "https://5daf8b36f2946f001481d81c.mockapi.io/api/v2/cards"
+        
+        let url = "https://5daf8b36f2946f001481d81c.mockapi.io/api/v2/cards"
+
+        XCTAssertEqual(url1, url)
+    
+    }
+    
+    private func testStupidString() {
+        let str = ["OK", "NO"]
+        XCTAssertNotEqual(str, [str.joined()])
+    }
+    
+    private func testStupidString1() {
+        let str = "    "
+        let str1 = str.trimmingCharacters(in: .whitespaces)
+        XCTAssertNotEqual(str1, str)
+        XCTAssertTrue(str1.isEmpty)
+    }
 
 }

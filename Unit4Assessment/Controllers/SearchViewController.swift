@@ -31,7 +31,7 @@ class SearchViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     
     override func loadView() {
         super.loadView()
@@ -112,14 +112,18 @@ extension SearchViewController: CardViewCellDelegate {
     }
     
     private func saveCard(_ card: Card) {
-        do {
-            try dataPersistence.createItem(card)
-        } catch {
-            print(error)
+        if !dataPersistence.hasItemBeenSaved(card) {
+            do {
+                try dataPersistence.createItem(card)
+            } catch {
+                print(error)
+            }
+            let alertVC = UIAlertController(title: "Success", message: "Successfully added a flashcard!", preferredStyle: .alert)
+            alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            present(alertVC, animated: true, completion: nil)
+        } else {
+            let alertvc = UIAlertController.errorAlert("Could not save, item has been saved already.")
+            present(alertvc, animated: true)
         }
-        
-        let alertVC = UIAlertController(title: "Success", message: "Successfully added a flashcard!", preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        present(alertVC, animated: true, completion: nil)
     }
 }

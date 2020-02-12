@@ -23,7 +23,7 @@ class CreateViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     
     override func loadView() {
         super.loadView()
@@ -45,28 +45,38 @@ class CreateViewController: UIViewController {
         if let text = createView.textField.text {
             let card = Card(cardTitle: text, facts: [createView.textView.text, createView.secondTextView.text])
             
-            do {
-                try dataPersistence.createItem(card)
-            } catch {
-                print(error)
+            if dataPersistence.hasItemBeenSaved(card) {
+                
+                do {
+                    try dataPersistence.createItem(card)
+                } catch {
+                    print(error)
+                }
+                
+                createView.textField.text = nil
+                createView.textView.text = ""
+                createView.secondTextView.text = ""
+                
+                let alertVC = UIAlertController(title: "Success", message: "Successfully created a flashcard!", preferredStyle: .alert)
+                alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                present(alertVC, animated: true, completion: nil)
+                
+            } else {
+                
+                present(UIAlertController.errorAlert("Card has already been saved."), animated: true)
             }
-            
-            createView.textField.text = nil
-            createView.textView.text = ""
-            createView.secondTextView.text = ""
-            
-            let alertVC = UIAlertController(title: "Success", message: "Successfully created a flashcard!", preferredStyle: .alert)
-            alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            present(alertVC, animated: true, completion: nil)
         }
     }
     
     private func checkFields() {
         if let text = createView.textField.text {
-            if !createView.textView.text.isEmpty && !createView.secondTextView.text.isEmpty && !text.isEmpty {
+            if !createView.textView.text.trimmingCharacters(in: .whitespaces).isEmpty && !createView.secondTextView.text.trimmingCharacters(in: .whitespaces).isEmpty && !text.trimmingCharacters(in: .whitespaces).isEmpty {
                 createView.button.isHidden = false
+            } else {
+                createView.button.isHidden = true
             }
         } else {
+            print(createView.button.isHidden)
             createView.button.isHidden = true
         }
     }
@@ -76,6 +86,7 @@ class CreateViewController: UIViewController {
 extension CreateViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         checkFields()
+        print("checkFields() \(Date())")
         return true
     }
     
@@ -88,6 +99,7 @@ extension CreateViewController: UITextFieldDelegate {
 extension CreateViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         checkFields()
+        print("checkFields() \(Date())")
         return true
     }
 }
