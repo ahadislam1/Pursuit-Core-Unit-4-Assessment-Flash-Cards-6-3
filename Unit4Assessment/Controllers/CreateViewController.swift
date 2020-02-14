@@ -27,7 +27,7 @@ class CreateViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
-        
+ 
         view = createView
     }
     
@@ -96,6 +96,9 @@ extension CreateViewController: UITextFieldDelegate {
 
 extension CreateViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+        }
         checkFields()
         return true
     }
